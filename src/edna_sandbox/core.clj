@@ -4,12 +4,9 @@
 (def ^:private note-char? (set "abcdefg"))
 
 (def ^:private octave-modifiers
-  (concat (->> (range 2 10)
-               reverse
-               (map #(str "-" %)))
+  (concat (map str (range -9 -1))
           ["-" "" "+"]
-          (->> (range 2 10)
-               (map #(str "+" %)))))
+          (map #(str "+" %) (range 2 10))
 
 (defn- select-indexes [v indexes]
   (-> (select-keys v indexes)
